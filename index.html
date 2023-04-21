@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Путешествия по России</title>
+  <link href="./pages/index.css" rel="stylesheet">
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/header-logo.svg" alt="Лого">
+    </header>
+    <section class="profile">
+      <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit"></button>
+        <p class="profile__description">Исследователь океана</p>
+      </div>
+      <button class="profile__add"></button>
+    </section>
+    <section class="cards">
+      <div class="card">
+        <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Карачаевск</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/elbrus.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Гора Эльбрус</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/dombai.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Домбай</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/elbrus.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Гора Эльбрус</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/dombai.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Домбай</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото">
+        <div class="card__description">
+          <h2 class="card__name">Карачаево-Черкесия</h2>
+          <button class="card__like"></button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      © 2020 Mesto Russia
+    </footer>
+  </div>
+  <section class="popup">
+    <div class="popup__content">
+      <button class="popup__close"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <input type="text" class="popup__input popup__input_type_name">
+      <input type="text" class="popup__input popup__input_type_description">
+      <button class="popup__save">Сохранить</button>
+    </div>
+  </section>
+  <script src="./scripts/script.js"></script>
+</body>
