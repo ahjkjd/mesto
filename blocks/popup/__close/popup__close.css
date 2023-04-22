@@ -8,6 +8,7 @@
   background-image: url("../../../images/close-icon.svg");
   background-size: contain;
   border: none;
+  transition: opacity 0.4s;
 }
 
 .popup__close:hover {
