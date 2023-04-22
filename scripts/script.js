@@ -19,12 +19,6 @@ function closePopup() {
   popup.classList.remove('popup_opened');
 }
 
-function savePopup() {
-  profileName.textContent = inputName.value;
-  profileDescription.textContent =  inputDescription.value;
-  closePopup();
-}
-
 function handleFormSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;

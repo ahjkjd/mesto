@@ -6,7 +6,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   border: none;
-  margin-left: 18px;
+  margin: 0 18px;
   padding-left: 24px;
   transition: opacity 0.4s;
 }
