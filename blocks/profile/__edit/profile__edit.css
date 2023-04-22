@@ -1,16 +1,18 @@
 .profile__edit {
-  display: inline;
   width: 24px;
   height: 24px;
   background-color: black;
   background-image: url("../../../images/edit-button.svg");
   background-size:contain;
+  background-repeat: no-repeat;
   border: none;
   margin-left: 18px;
+  padding-left:24px;
 }
 
 .profile__edit:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width:920px) {
@@ -18,12 +20,6 @@
     width: 18px;
     height: 18px;
     margin-left: 10px;
-  }
-}
-
-@media screen and (max-width:620px) {
-  .profile__edit {
-    position: absolute;
-    transform: translateY(8px);
+    padding-left:18px;
   }
 }
