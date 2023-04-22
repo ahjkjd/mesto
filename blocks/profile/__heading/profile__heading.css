@@ -6,7 +6,7 @@
 
 @media screen and (max-width:620px) {
   .profile__heading {
-    transform: translateX(13px);
+    transform: translateX(25px);
     max-width: 282px;
   }
 }
