@@ -3,11 +3,12 @@
   height: 24px;
   background-color: black;
   background-image: url("../../../images/edit-button.svg");
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   border: none;
   margin-left: 18px;
-  padding-left:24px;
+  padding-left: 24px;
+  transition: opacity 0.4s;
 }
 
 .profile__edit:hover {
@@ -20,6 +21,6 @@
     width: 18px;
     height: 18px;
     margin-left: 10px;
-    padding-left:18px;
+    padding-left: 18px;
   }
 }

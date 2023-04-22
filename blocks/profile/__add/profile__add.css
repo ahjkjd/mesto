@@ -6,6 +6,7 @@
   border: none;
   border-radius: 2px;
   overflow: hidden;
+  transition: opacity 0.4s;
 }
 
 .profile__add:hover {
