@@ -4,10 +4,13 @@
   background-color: black;
   background-image: url("../../../images/add-button.svg");
   border: none;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 .profile__add:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width:620px) {
