@@ -25,62 +25,13 @@
         <button type="button" class="profile__add"
           aria-label="добавление карточки"></button>
       </section>
-      <section class="cards" aria-label="Карточки с фотографиями">
-        <article class="card">
-          <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Карачаевск</h2>
-            <button type="button" class="card__like" 
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__image" src="./images/elbrus.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Гора Эльбрус</h2>
-            <button type="button" class="card__like"
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__image" src="./images/dombai.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Домбай</h2>
-            <button type="button" class="card__like"
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__image" src="./images/elbrus.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Гора Эльбрус</h2>
-            <button type="button" class="card__like"
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__image" src="./images/dombai.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Домбай</h2>
-            <button type="button" class="card__like"
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото">
-          <div class="card__description">
-            <h2 class="card__name">Карачаево-Черкесия</h2>
-            <button type="button" class="card__like"
-              aria-label="Лайк"></button>
-          </div>
-        </article>
-      </section>
+      <section class="cards" aria-label="Карточки с фотографиями"></section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup popup_purpose_profile">
     <div class="popup__content">
       <button type="button" class="popup__close"
         aria-label="закрыть окно редактирования профиля"></button>
@@ -94,6 +45,39 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_purpose_cards">
+    <div class="popup__content">
+      <button type="button" class="popup__close"
+        aria-label="закрыть окно добавления фотографии"></button>
+      <h2 class="popup__heading">Новое место</h2>
+      <form name="card-add" class="popup__form">
+        <input type="text" name="image-description" placeholder="Название"
+          class="popup__input popup__input_type_image-description" required>
+        <input type="text" name="image-link" placeholder="Ссылка на картинку"
+          class="popup__input popup__input_type_image-link" required>
+        <button type="submit" class="popup__save">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="image-popup">
+    <div class="image-popup__content">
+      <button type="button" class="image-popup__close"
+        aria-label="закрыть фотографию"></button>
+      <img class="image-popup__image" src="./" alt="Фото">
+      <p class="image-popup__caption"></p>
+    </div>
+  </div>
+  <template id="card">
+    <article class="card">
+      <img class="card__image" src="" alt="Фото">
+      <div class="card__description">
+        <h2 class="card__name"></h2>
+        <button type="button" class="card__like" aria-label="Лайк"></button>
+      </div>
+      <button type="button" class="card__delete"
+        aria-label="Удаление карточки"></button>
+    </article>
+  </template>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
