@@ -37,9 +37,9 @@
         aria-label="закрыть окно редактирования профиля"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form name="profile-change" class="popup__form">
-        <input type="text" name="profile-name"
+        <input type="text" name="profile-name" placeholder="Имя"
           class="popup__input popup__input_type_name" required>
-        <input type="text" name="profile-description"
+        <input type="text" name="profile-description" placeholder="Профессия"
           class="popup__input popup__input_type_description" required>
         <button type="submit" class="popup__save">Сохранить</button>
       </form>
@@ -53,18 +53,18 @@
       <form name="card-add" class="popup__form">
         <input type="text" name="image-description" placeholder="Название"
           class="popup__input popup__input_type_image-description" required>
-        <input type="text" name="image-link" placeholder="Ссылка на картинку"
+        <input type="url" name="image-link" placeholder="Ссылка на картинку"
           class="popup__input popup__input_type_image-link" required>
         <button type="submit" class="popup__save">Создать</button>
       </form>
     </div>
   </div>
-  <div class="image-popup">
-    <div class="image-popup__content">
-      <button type="button" class="image-popup__close"
+  <div class="popup popup_purpose_image">
+    <div class="popup__content popup__content_type_image">
+      <button type="button" class="popup__close"
         aria-label="закрыть фотографию"></button>
-      <img class="image-popup__image" src="./" alt="Фото">
-      <p class="image-popup__caption"></p>
+      <img class="popup__image" src="./" alt="Фото">
+      <p class="popup__caption"></p>
     </div>
   </div>
   <template id="card">

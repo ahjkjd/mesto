@@ -17,10 +17,10 @@ const cardFormElement = popupCardAdd.querySelector('.popup__form');
 const imageDescription = popupCardAdd.querySelector('.popup__input_type_image-description');
 const imageLink = popupCardAdd.querySelector('.popup__input_type_image-link');
 
-const imagePopup = document.querySelector('.image-popup');
-const closeImageButton = imagePopup.querySelector('.image-popup__close');
-const image = imagePopup.querySelector('.image-popup__image');
-const imageCaption = imagePopup.querySelector('.image-popup__caption');
+const imagePopup = document.querySelector('.popup_purpose_image');
+const closeImageButton = imagePopup.querySelector('.popup__close');
+const image = imagePopup.querySelector('.popup__image');
+const imageCaption = imagePopup.querySelector('.popup__caption');
 
 function openProfileEditPopup() {
   inputName.value = profileName.textContent;
@@ -31,7 +31,7 @@ function openProfileEditPopup() {
 function closePopup() {
   popupProfileEdit.classList.remove('popup_opened');
   popupCardAdd.classList.remove('popup_opened');
-  imagePopup.classList.remove('image-popup_opened');
+  imagePopup.classList.remove('popup_opened');
 }
 
 function handleProfileFormSubmit(evt) {
@@ -46,7 +46,7 @@ function openImage(evt) {
   const card = evt.target.parentElement;
   const caption = card.querySelector('.card__name');
   imageCaption.textContent = caption.textContent;
-  imagePopup.classList.add('image-popup_opened');
+  imagePopup.classList.add('popup_opened');
 }
 
 function addCard(name, link) {
