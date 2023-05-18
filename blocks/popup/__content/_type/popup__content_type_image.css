@@ -1,4 +1,8 @@
-.image-popup__content {
+.popup__content_type_image {
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  background: none;
   position: relative;
   max-width: 75vw;
   max-height: 75vh;
