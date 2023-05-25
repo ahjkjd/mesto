@@ -24,6 +24,16 @@ const imageCaption = imagePopup.querySelector('.popup__caption');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+      closePopup(popup);
+    };
+  });
+  document.addEventListener('click', (evt) => {
+    if(evt.target.classList.contains('popup')) {
+      closePopup(popup);
+    };
+  });
 }
 
 function closePopup(popup) {
@@ -37,7 +47,6 @@ function openProfileEditPopup() {
 }
 
 function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent =  inputDescription.value;
   closePopup(popupProfileEdit);
@@ -85,7 +94,6 @@ function openCardAddPopup() {
 }
 
 function handleCardFormSubmit (evt) {
-  evt.preventDefault();
   renderCard(inputImageDescription.value, inputImageLink.value);
   inputImageDescription.value = "";
   inputImageLink.value = "";
