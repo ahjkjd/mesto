@@ -17,27 +17,33 @@ const cardFormElement = popupCardAdd.querySelector('.popup__form');
 const inputImageDescription = popupCardAdd.querySelector('.popup__input_type_image-description');
 const inputImageLink = popupCardAdd.querySelector('.popup__input_type_image-link');
 
+const cardTemplate = document.querySelector('#card').content;
+
 const imagePopup = document.querySelector('.popup_purpose_image');
 const closeImageButton = imagePopup.querySelector('.popup__close');
 const image = imagePopup.querySelector('.popup__image');
 const imageCaption = imagePopup.querySelector('.popup__caption');
 
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', (evt) => {
+  function closePopupWithEscape(evt) {
     if(evt.key === 'Escape') {
       closePopup(popup);
     };
-  });
-  document.addEventListener('click', (evt) => {
+    evt.target.removeEventListener('keydown', closePopupWithEscape);
+  }
+  document.addEventListener('keydown', closePopupWithEscape);
+  function closePopupWithClick(evt) {
     if(evt.target.classList.contains('popup')) {
       closePopup(popup);
     };
-  });
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+    evt.target.removeEventListener('click', closePopupWithClick);
+  }
+  document.addEventListener('click', closePopupWithClick);
 }
 
 function openProfileEditPopup() {
@@ -54,6 +60,7 @@ function handleProfileFormSubmit(evt) {
 
 function openImage(evt) {
   image.setAttribute('src', evt.target.src);
+  image.setAttribute('alt', evt.target.alt);
   const card = evt.target.parentElement;
   const caption = card.querySelector('.card__name');
   imageCaption.textContent = caption.textContent;
@@ -61,11 +68,11 @@ function openImage(evt) {
 }
 
 function createCard(name, link) {
-  const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
   cardElement.querySelector('.card__name').textContent = name;
   cardElement.querySelector('.card__image').setAttribute('src', link);
+  cardElement.querySelector('.card__image').setAttribute('alt', `${name}, фото`);
   
   const likeButton = cardElement.querySelector('.card__like');
   likeButton.addEventListener('click', function () {
@@ -91,12 +98,12 @@ function renderCard(name, link) {
 
 function openCardAddPopup() {
   openPopup(popupCardAdd);
+  enableValidation(validationConfig);
 }
 
 function handleCardFormSubmit (evt) {
   renderCard(inputImageDescription.value, inputImageLink.value);
-  inputImageDescription.value = "";
-  inputImageLink.value = "";
+  cardFormElement.reset();
   closePopup(popupCardAdd);
 }
 
