@@ -37,15 +37,15 @@ function closePopupWithClick(evt) {
   };
 }
 
-let closePopupWithEscape;
+function closePopupWithEscape(evt) {
+  if(evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  };
+};
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  closePopupWithEscape = (evt) => {
-    if(evt.key === 'Escape') {
-      closePopup(popup);
-    };
-  };
   document.addEventListener('keydown', closePopupWithEscape);
   document.addEventListener('click', closePopupWithClick);
 }
