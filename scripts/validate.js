@@ -26,13 +26,21 @@ const hasInvalidInput = (inputList)=>{
   });
 };
 
+const activateButton = (buttonElement,validationConfig)=>{
+  buttonElement.classList.add(validationConfig.activeButtonClass);
+  buttonElement.removeAttribute('disabled');
+};
+
+const disableButton = (buttonElement,validationConfig)=>{
+  buttonElement.classList.remove(validationConfig.activeButtonClass);
+  buttonElement.setAttribute('disabled', true);
+};
+
 const toggleButtonState = (inputList,buttonElement,validationConfig)=>{
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.remove(validationConfig.activeButtonClass);
-    buttonElement.setAttribute('disabled', true);
+    disableButton(buttonElement,validationConfig);
   } else {
-    buttonElement.classList.add(validationConfig.activeButtonClass);
-    buttonElement.removeAttribute('disabled');
+    activateButton(buttonElement,validationConfig);
   }
 };
 
