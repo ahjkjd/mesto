@@ -1,3 +1,4 @@
+import { initialCards, validationConfig } from './constants.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
@@ -19,53 +20,11 @@ const closeCardAddButton = popupCardAdd.querySelector('.popup__close');
 const cardFormElement = popupCardAdd.querySelector('.popup__form');
 const inputImageDescription = popupCardAdd.querySelector('.popup__input_type_image-description');
 const inputImageLink = popupCardAdd.querySelector('.popup__input_type_image-link');
-const popupSaveButton = popupCardAdd.querySelector('.popup__save');
 
 const imagePopup = document.querySelector('.popup_purpose_image');
 const closeImageButton = imagePopup.querySelector('.popup__close');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  activeButtonClass: 'popup__save_active',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const imagePopupConfig = {
-  imagePopup: imagePopup,
-  openFunction: openPopup,
-  imageSelector: '.popup__image',
-  captionSelector: '.popup__caption'
-}
+const popupImage = imagePopup.querySelector('.popup__image');
+const caption = imagePopup.querySelector('.popup__caption');
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
@@ -104,21 +63,23 @@ function handleProfileFormSubmit(evt) {
   closePopup(popupProfileEdit);
 }
 
-function renderCard(name, link) {
-  const card = new Card(name, link, '#card', imagePopupConfig);
-  cardContainer.prepend(card.generateCard());
+function handleOpenImagePopup(name, link) {
+  popupImage.setAttribute('src', link);
+  popupImage.setAttribute('alt', `${name}, фото`);
+  caption.textContent = name;
+  openPopup(imagePopup);
 }
 
-function disableButton(buttonElement,validationConfig) {
-  buttonElement.classList.remove(validationConfig.activeButtonClass);
-  buttonElement.setAttribute('disabled', true);
-};
+function renderCard(name, link) {
+  const card = new Card(name, link, '#card', handleOpenImagePopup);
+  cardContainer.prepend(card.generateCard());
+}
 
 function handleCardFormSubmit (evt) {
   renderCard(inputImageDescription.value, inputImageLink.value);
   cardFormElement.reset();
   closePopup(popupCardAdd);
-  disableButton(popupSaveButton,validationConfig);
+  validators[cardFormElement.getAttribute('name')].disableButton();
 }
 
 initialCards.forEach(item => {
@@ -127,13 +88,16 @@ initialCards.forEach(item => {
 
 const validate = (validationConfig) => {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+  const validators = {};
   formList.forEach((formElement) => {
-    const form = new FormValidator(validationConfig, formElement, disableButton);
-    form.enableValidation();
+    const formValidator = new FormValidator(validationConfig, formElement);
+    formValidator.enableValidation();
+    validators[formElement.getAttribute('name')] = formValidator;
   });
+  return validators;
 };
 
-validate(validationConfig);
+const validators = validate(validationConfig);
 
 editProfileButton.addEventListener('click', openProfileEditPopup);
 closeProfileEditButton.addEventListener('click', () => {closePopup(popupProfileEdit)});

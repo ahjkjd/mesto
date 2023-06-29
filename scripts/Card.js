@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, templateSelector, imagePopupConfig) {
+  constructor(name, link, templateSelector, handleOpenPopup) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
-    this._imagePopupConfig = imagePopupConfig;
+    this._handleOpenPopup = handleOpenPopup;
   }
 
   _getTemplate() {
@@ -13,26 +13,22 @@ export class Card {
   }
 
   _openImage() {
-    const imagePopup = this._imagePopupConfig.imagePopup;
-    const popupImage = imagePopup.querySelector(this._imagePopupConfig.imageSelector);
-    const caption = imagePopup.querySelector(this._imagePopupConfig.captionSelector);
-    popupImage.setAttribute('src', this._link);
-    popupImage.setAttribute('alt', `${this._name}, фото`);
-    caption.textContent = this._name;
-    this._imagePopupConfig.openFunction(imagePopup);
+    this._handleOpenPopup(this._name, this._link);
   }
 
-  _setEventListeners() {
+  _setImageEventListener() {
     this._image.addEventListener('click', () => {
       this._openImage();
     });
+  }
 
-    this._likeButton = this._element.querySelector('.card__like');
+  _setLikeEventListener() {
     this._likeButton.addEventListener('click', () => {
       this._likeButton.classList.toggle('card__like_active');
     });
+  }
 
-    this._deleteButton = this._element.querySelector('.card__delete');
+  _setDeleteEventListener() {
     this._deleteButton.addEventListener('click', () => {
       this._element.remove();
     });
@@ -41,12 +37,17 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
 
+    this._likeButton = this._element.querySelector('.card__like');
+    this._deleteButton = this._element.querySelector('.card__delete');
+    
     this._element.querySelector('.card__name').textContent = this._name;
     this._image = this._element.querySelector('.card__image');
     this._image.setAttribute('src', this._link);
     this._image.setAttribute('alt', `${this._name}, фото`);
 
-    this._setEventListeners();
+    this._setImageEventListener();
+    this._setLikeEventListener();
+    this._setDeleteEventListener();
 
     return this._element;
   }
