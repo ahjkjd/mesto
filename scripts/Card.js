@@ -16,21 +16,29 @@ export class Card {
     this._handleOpenPopup(this._name, this._link);
   }
 
+  _toggleLikeButton() {
+    this._likeButton.classList.toggle('card__like_active');
+  }
+
+  _deleteCard() {
+    this._element.remove();
+  }
+
   _setImageEventListener() {
     this._image.addEventListener('click', () => {
       this._openImage();
     });
   }
-
+  
   _setLikeEventListener() {
     this._likeButton.addEventListener('click', () => {
-      this._likeButton.classList.toggle('card__like_active');
+      this._toggleLikeButton();
     });
   }
 
   _setDeleteEventListener() {
     this._deleteButton.addEventListener('click', () => {
-      this._element.remove();
+      this._deleteCard();
     });
   }
 
