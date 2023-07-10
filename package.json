@@ -1,0 +1,12 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Учебный проект - страница с возможностью редактировать профиль пользователя, а также добавлять и удалять карточки с фотографиями.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

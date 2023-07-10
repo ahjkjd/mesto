@@ -33,3 +33,8 @@ export const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 };
+
+export const userInfoConfig = {
+  nameSelector:'.profile__name',
+  infoSelector: '.profile__description'
+};
