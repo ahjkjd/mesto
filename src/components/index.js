@@ -1,3 +1,5 @@
+import '../pages/index.css';
+
 import { initialCards, validationConfig, userInfoConfig } from './constants.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
