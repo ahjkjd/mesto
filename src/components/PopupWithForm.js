@@ -1,15 +1,15 @@
 import Popup from './Popup.js';
-import { validationConfig } from './constants.js';
+import { validationConfig } from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, handleSubmit) {
     super(popupSelector);
     this._handleSubmit = handleSubmit;
     this._formElement = this._element.querySelector(validationConfig.formSelector);
+    this._inputList = Array.from(this._element.querySelectorAll(validationConfig.inputSelector));
   }
 
   _getInputValues() {
-    this._inputList = Array.from(this._element.querySelectorAll(validationConfig.inputSelector));
     this._values = {};
     this._inputList.forEach((inputElement) => {
       const key = inputElement.getAttribute('id');
